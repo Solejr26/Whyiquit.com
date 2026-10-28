@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16a34a">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icon.svg" type="image/svg+xml">
+<title>WhyIQuit</title>
+<script src="/theme.js"></script>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+  <div class="top">
+    <div><h1>Why<span>I</span>Quit</h1><p class="tag">The real reasons people leave.</p></div>
+    <div class="hbtns">
+      <span class="net" id="net" title="Network status"><i></i><span id="netTxt">Checking…</span></span>
+      <button class="btn ghost sm" id="themeBtn" aria-label="Switch theme">◐</button>
+      <button class="btn ghost sm" id="acctBtn">Sign in</button>
+    </div>
+  </div>
+</header>
+<div class="banner hidden" id="offBanner">You are offline. Posts and reactions will work again when you reconnect.</div>
+
+<main>
+  <div class="tabs">
+    <button class="tab on" data-tab="feed">Stories</button>
+    <button class="tab" data-tab="trends">Trends</button>
+    <button class="tab" data-tab="company">Company</button>
+  </div>
+
+  <section id="feed">
+    <div class="row">
+      <input id="q" type="search" placeholder="Search stories, roles, companies">
+      <select id="sort" class="auto"><option value="new">Newest</option><option value="top">Top</option></select>
+    </div>
+    <div class="chips" id="chips"></div>
+    <button class="btn sm newpill hidden" id="newPill">New stories · tap to refresh</button>
+    <div id="list"></div>
+    <div class="row"><button class="btn ghost hidden" id="more">Load more</button></div>
+  </section>
+
+  <section id="trends" class="hidden">
+    <div class="card"><div class="big" id="totalNum">0</div><div class="meta">stories shared. Top reasons people quit:</div><div id="trendBars"></div></div>
+  </section>
+
+  <section id="company" class="hidden">
+    <div class="row"><input id="coName" type="search" placeholder="Company name"><button class="btn" id="coGo">Look up</button></div>
+    <div id="coResult"></div>
+  </section>
+
+  <footer>Stories are personal opinions, not verified facts.<br>
+    <a href="/guidelines.html">Community Guidelines</a> · <a href="/terms.html">Terms &amp; Privacy</a></footer>
+</main>
+
+<button class="btn fab" id="newBtn">+ Share your story</button>
+
+<dialog id="authDlg"><div class="sheet" id="authBody"></div></dialog>
+
+<dialog id="postDlg">
+  <form class="sheet" id="postForm">
+    <h2>Why did you quit?</h2>
+    <label for="fReason">Main reason</label><select id="fReason"></select>
+    <label for="fStory">Your story</label>
+    <textarea id="fStory" maxlength="1500" placeholder="What really happened? Keep it about the situation, not personal attacks."></textarea>
+    <div class="row"><div class="f2"><label for="fRole">Role (optional)</label><input id="fRole" maxlength="60"></div>
+      <div class="f1"><label for="fYears">Years there</label><input id="fYears" type="number" min="0" max="50" step="0.5" value="1"></div></div>
+    <label for="fCompany">Company (optional)</label><input id="fCompany" maxlength="60">
+    <label class="inl"><input type="checkbox" id="fAnon" checked> Post anonymously (your username is hidden from readers)</label>
+    <p class="note">Read the <a href="/guidelines.html" target="_blank" rel="noopener">Community Guidelines</a>. Don't name individuals or share private details. Posts are checked by AI and reviewed by people.</p>
+    <div class="err" id="postErr"></div>
+    <div class="row"><button class="btn ghost f1" type="button" id="postCancel">Cancel</button><button class="btn f2" type="submit" id="postSubmit">Post</button></div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast"></div>
+<script src="/app.js"></script>
+<script src="/social.js"></script>
+</body>
+</html>
